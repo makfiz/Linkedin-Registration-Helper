@@ -1,0 +1,38 @@
+{
+   "action": {
+      "default_title": "Linkedin Registration Helper",
+      "default_icon": "img/linkedout.png"
+   },
+   "content_scripts": [ {
+      "js": [ "js/script.js" ],
+      "matches": [ "*://*/*" ]
+   } ],
+   "description": "Extension to help with accounts registration.",
+   "icons": {
+      "100": "img/linkedout.png",
+      "128": "img/linkedout.png",
+      "19": "img/linkedout.png",
+      "48": "img/linkedout.png"
+   },
+   "web_accessible_resources": [
+      { 
+         "resources": ["linkedout.png"],
+         "matches": ["<all_urls>"]
+      }
+      
+   ],
+   "manifest_version": 3,
+   "name": "Linkedin Registration Helper",
+   "permissions": [ "tabs", "clipboardRead", "clipboardWrite", "storage", "activeTab" ],
+   "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+   ],
+   "update_url": "https://github.com/makfiz/Linkedin-Registration-Helper",
+   "version": "1.00",
+   "developer": {
+      "name": "Maksym Hlanskov",
+      "url": "https://github.com/makfiz"
+   }
+   
+}
