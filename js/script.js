@@ -236,6 +236,32 @@ if(window.location.href.includes("linkedin.com/signup")) {
 }
 
 
+if(window.location.href.includes("sms-activate.org")) {
+    setInterval(()=>{
+       const activateGrid = document.getElementsByClassName("activate-grid")
+       const activateMobile = activateGrid[0]
+       const activateDesktop = activateGrid[1]
+       const activateChildrens = activateMobile.childNodes.length > 0 ? activateMobile : activateDesktop
+       const listOfItemsWithPin = activateChildrens.querySelectorAll(".activate-grid-item__spoller") 
+       
+       listOfItemsWithPin.forEach(item => {
+            
+            if(item.children.length > 1) {
+
+                if(item.children[0].children.length === 1){
+                    item.children[0].before(createCopyPinButton(item.children[0].textContent))   
+                }      
+            }
+       })
+        
+    }, 3000)
+}
+
+
+
+
+
+
 function getEmail () {
     let email = document.getElementById('email-address')
     if (email === null) {
@@ -258,9 +284,20 @@ function getEmail () {
 
  
 async function getDataFromClipboard () {
-    const clipData = await navigator.clipboard.readText()
+    try { const clipData = await navigator.clipboard.readText()
     return clipData
+    } catch (err) {
+        console.error('Failed to copy: ', err);
+    }
 }
+
+async function copyToClipboard (text) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
 
 function getRandomData () {
     let names = ["Jack","Lewis","James","Logan","Daniel","Ryan","Aaron","Oliver","Liam","Jamie","Ethan","Alexander","Cameron","Finlay","Kyle","Adam","Harry","Matthew","Callum","Lucas","Nathan","Aiden","Dylan","Charlie","Connor","Thomas","Alfie","Joshua","William","Jayden","Andrew","Kai","Max","Ben","Samuel","Luke","Tyler","Rory","David","Michael","Riley","Noah","Cole","Joseph","John","Archie","Jacob","Fraser","Rhys","Ross","Calum","Jay","Josh","Euan","Mason","Owen","Sam","Leo","Robert","Scott","Leon","Robbie","Benjamin","Caleb","Oscar","Harris","Murray","Sean","Christopher","Kieran","Aidan","Jake","Evan","Kayden","Arran","Angus","Brodie","Ewan","Muhammad","Alex","Declan","Finn","Blair","Ollie","Reece","Corey","Kian","Harrison","Taylor","Kaiden","Kenzie","Cody","Craig","Mohammed","Calvin","Mark","Jude","Luca","Ciaran","George","Zak","Zac","Charles","Gregor","Hamish","Isaac","Harvey","Shay","Struan","Lee","Steven","Joe","Lennon","Patrick","Jason","Louis","Olly","Bailey","Marcus","Peter","Sebastian","Gabriel","Jackson","Zack","Ashton","Brandon","Reuben","Theo","Paul","Conor","Hayden","Lachlan","Ruaridh","Innes","Stuart","Jordan","Sonny","Alan","Blake","Zachary","Cooper","Ellis","Caiden","Fergus","Jakub","Zach","Findlay","Alistair","Elliot"];
@@ -272,6 +309,7 @@ function getRandomData () {
     document.getElementById('last-name').value = lastname;
     document.getElementById('password').value = pass;
 }
+
 
 // function saveEmailHystory(email) {
 //     let today = new Date().toLocaleDateString()
@@ -294,7 +332,7 @@ function createEmailPasteButton() {
     if (dataPasteButton === null ) {
         email.parentNode.after(createContainer("email"))
         let buttonsContainer = document.getElementById('email-buttons-container')
-        buttonsContainer.appendChild(PasteButtonConstructor("data"))
+        buttonsContainer.appendChild(pasteButtonConstructor("data"))
     
         dataPasteButton = document.querySelector("#data-paste-button")
         dataPasteButton.addEventListener("click", async e => {
@@ -316,8 +354,8 @@ function createNumberPasteButtonsGrupe() {
         
         number.parentNode.after(createContainer("number"))
         buttonsContainer = window.frames[0].document.getElementById('number-buttons-container')
-        buttonsContainer.appendChild(PasteButtonConstructor("full-number"))
-        buttonsContainer.appendChild(PasteButtonConstructor("without-dialing-code"))
+        buttonsContainer.appendChild(pasteButtonConstructor("full-number"))
+        buttonsContainer.appendChild(pasteButtonConstructor("without-dialing-code"))
         
         let numberPasteButton = window.frames[0].document.querySelector("#full-number-paste-button")
         numberPasteButton.addEventListener("click", async e => {
@@ -346,7 +384,7 @@ function createPinPasteButton() {
     if (pinPasteButton === null && pin !== null) {
         pin.parentNode.after(createContainer("pin"))
         let buttonsContainer = window.frames[0].document.getElementById('pin-buttons-container')
-        buttonsContainer.appendChild(PasteButtonConstructor("pin"))
+        buttonsContainer.appendChild(pasteButtonConstructor("pin"))
         pinPasteButton = window.frames[0].document.querySelector("#pin-paste-button")
         pinPasteButton.addEventListener("click", async e => {
         e.preventDefault()
@@ -365,7 +403,7 @@ function createContainer (name) {
     return buttonContainer
 }
 
-function PasteButtonConstructor(btnName) {
+function pasteButtonConstructor(btnName) {
     pasteButton = document.createElement("button")
     pasteButton.id = `${btnName}-paste-button`
     pasteButton.innerText = `Paste ${btnName}`
@@ -375,6 +413,20 @@ function PasteButtonConstructor(btnName) {
     `
     pasteButton.type = "button"
     return pasteButton
+}
+
+function createCopyPinButton(pin) {
+    copyPinButton = document.createElement("button")
+    copyPinButton.id = `copy-pin-button`
+    copyPinButton.innerText = `Copy`
+    copyPinButton.style.cssText = `
+    color: #fff;font-size: 12px;padding: 5px 0;border-radius: 24px;font-weight: 700; font-size: 16px;
+    background-color:#F0684A; height: 30px; border: 0; margin: 0 10px; width: 100%; max-width: 120px
+    `
+    copyPinButton.type = "button"
+    copyPinButton.onclick = async () => await copyToClipboard(pin.replace(/[^0-9]/g,""))
+
+    return copyPinButton
 }
 
 function createButtonsObserver () {
