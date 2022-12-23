@@ -251,7 +251,7 @@ function getCountryInfoByNumber(number) {
 
   function ValidateEmail(clipData) 
   {
-   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(clipData))
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/.test(clipData))
     {
       return clipData
     }
