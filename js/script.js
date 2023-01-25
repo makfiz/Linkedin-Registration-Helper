@@ -34,8 +34,8 @@ if(window.location.href.includes("sms-activate.org")) {
         const item_confirmation = item_spoller.children[0]     
         
             if(item_confirmation.children.length === 2) {
-                
-                item_confirmation.children[0].before(createCopyPinButton(item_confirmation.children[0].textContent))   
+                console.dir(item_confirmation.children[0])
+                item_confirmation.children[0].before(createCopyPinButton(item_confirmation.children[0]))   
                 // if(item.children[0].children.length === 2){
                     
                 // }      
@@ -91,9 +91,9 @@ async function getDataFromClipboard () {
     }
 }
 
-async function copyToClipboard (text) {
+async function copyToClipboard (element) {
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(element.textContent.replace(/[^0-9]/g,""));
     } catch (err) {
       console.error('Failed to copy: ', err);
     }
@@ -216,7 +216,7 @@ function pasteButtonConstructor(btnName) {
     return pasteButton
 }
 
-function createCopyPinButton(pin) {
+function createCopyPinButton(element) {
     copyPinButton = document.createElement("button")
     copyPinButton.id = `copy-pin-button`
     copyPinButton.innerText = `Copy`
@@ -225,7 +225,7 @@ function createCopyPinButton(pin) {
     background-color:#F0684A; height: 30px; border: 0; margin: 0 10px; width: 100%; max-width: 120px
     `
     copyPinButton.type = "button"
-    copyPinButton.onclick = async () => await copyToClipboard(pin.replace(/[^0-9]/g,""))
+    copyPinButton.onclick = async () => await copyToClipboard(element)
 
     return copyPinButton
 }
