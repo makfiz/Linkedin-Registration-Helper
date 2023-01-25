@@ -12,19 +12,45 @@ if(window.location.href.includes("linkedin.com/signup")) {
 
 if(window.location.href.includes("sms-activate.org")) {
     setInterval(()=>{
+        const numberInLS = localStorage.getItem('clipboardNumber');
        const activateGrid = document.getElementsByClassName("activate-grid")
+       
        const activateMobile = activateGrid[0]
        const activateDesktop = activateGrid[1]
        const activateChildrens = activateMobile.childNodes.length > 0 ? activateMobile : activateDesktop
-       const listOfItemsWithPin = activateChildrens.querySelectorAll(".activate-grid-item__spoller") 
+    //    const listOfItemsWithPin = activateChildrens.querySelectorAll(".activate-grid-item__confirmation") 
        
-       listOfItemsWithPin.forEach(item => {
-            
-            if(item.children.length > 1) {
+       
+       Array.from(activateChildrens.children).forEach(item => {
+        
+        const item_numberq = item.children[2]
+        const elWithNumber = item_numberq.children[0]
+        const btnCopy = item_numberq.children[1]
+        
+        btnCopy.onclick = async () => localStorage.setItem('clipboardNumber', btnCopy.dataset.clipboardText)
+        // await copyToClipboard(btnCopy.dataset.clipboardText.replace(/[&\/\\#,()$~%.'":*?<>{}]/g,'_'))
 
-                if(item.children[0].children.length === 1){
-                    item.children[0].before(createCopyPinButton(item.children[0].textContent))   
-                }      
+        const item_spoller = item.children[5]
+        const item_confirmation = item_spoller.children[0]     
+        
+            if(item_confirmation.children.length === 2) {
+                
+                item_confirmation.children[0].before(createCopyPinButton(item_confirmation.children[0].textContent))   
+                // if(item.children[0].children.length === 2){
+                    
+                // }      
+            }
+            
+            if (numberInLS == elWithNumber.textContent.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g,'')) {
+                elWithNumber.style.cssText = `
+                color: #fff;
+                background-color:#F0684A;
+                `
+            } else {
+                elWithNumber.style.cssText = `
+                color: #000000;
+                background-color:#fff;
+                `
             }
        })
         
@@ -195,7 +221,7 @@ function createCopyPinButton(pin) {
     copyPinButton.id = `copy-pin-button`
     copyPinButton.innerText = `Copy`
     copyPinButton.style.cssText = `
-    color: #fff;font-size: 12px;padding: 5px 0;border-radius: 24px;font-weight: 700; font-size: 16px;
+    color: #fff;font-size: 12px;padding: 5px 5px;border-radius: 24px;font-weight: 700; font-size: 16px;
     background-color:#F0684A; height: 30px; border: 0; margin: 0 10px; width: 100%; max-width: 120px
     `
     copyPinButton.type = "button"
