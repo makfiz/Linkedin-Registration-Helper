@@ -13,25 +13,44 @@ if(window.location.href.includes("linkedin.com/signup")) {
 if(window.location.href.includes("sms-activate.org")) {
     setInterval(()=>{
         const numberInLS = localStorage.getItem('clipboardNumber');
-       const activateGrid = document.getElementsByClassName("activate-grid")
+       const desktopGrid = document.getElementsByClassName("desktop-grid")
+       const mobileGrid = document.getElementsByClassName("mobile-grid")
        
-       const activateMobile = activateGrid[0]
-       const activateDesktop = activateGrid[1]
-       const activateChildrens = activateMobile.childNodes.length > 0 ? activateMobile : activateDesktop
+       const activateMobile = desktopGrid[0]
+       const activateDesktop = mobileGrid[0]
+       const activateChildrens = activateDesktop.childNodes.length > 0 ? activateDesktop : activateMobile
     //    const listOfItemsWithPin = activateChildrens.querySelectorAll(".activate-grid-item__confirmation") 
        
        
        Array.from(activateChildrens.children).forEach(item => {
-        
-        const item_numberq = item.children[2]
-        const elWithNumber = item_numberq.children[0]
-        const btnCopy = item_numberq.children[1]
-        
+        let btnCopy
+        let item_confirmation
+        let elWithNumber
+
+        // Desctop
+        if(item.children.length === 7) {
+            const item_numberq = item.children[2]
+             elWithNumber = item_numberq.children[0]
+            btnCopy = item_numberq.children[1]
+            const item_spoller = item.children[5]
+             item_confirmation = item_spoller.children[0] 
+        }
+        // Mobile
+        if(item.children.length === 6) {
+            const item_numberqContainer = item.children[1]
+            const item_numberq = item_numberqContainer.children[0]
+             elWithNumber = item_numberq.children[0]
+             btnCopy = item_numberq.children[1]
+            const item_spoller = item.children[2]
+             item_confirmation = item_spoller.children[0]
+             
+        }
+
+       
         btnCopy.onclick = async () => localStorage.setItem('clipboardNumber', btnCopy.dataset.clipboardText)
         // await copyToClipboard(btnCopy.dataset.clipboardText.replace(/[&\/\\#,()$~%.'":*?<>{}]/g,'_'))
 
-        const item_spoller = item.children[5]
-        const item_confirmation = item_spoller.children[0]     
+           
         
             if(item_confirmation.children.length === 2) {
                 console.dir(item_confirmation.children[0])
