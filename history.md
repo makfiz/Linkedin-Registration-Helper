@@ -6,4 +6,8 @@
 ### 1.01
 - Modification UI im sms-activate.org 
 
+### 1.03
+- fix new UI updates im sms-activate.org 
+- add number hihgtliter
+
 
