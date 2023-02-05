@@ -16,7 +16,7 @@
    },
    "web_accessible_resources": [
       { 
-         "resources": ["linkedout.png"],
+         "resources": ["img/linkedout.png", "js/script.js"],
          "matches": ["<all_urls>"]
       }
       
@@ -29,7 +29,7 @@
       "https://*/*"
    ],
    "update_url": "https://github.com/makfiz/Linkedin-Registration-Helper",
-   "version": "1.03",
+   "version": "1.04",
    "developer": {
       "name": "Maksym Hlanskov",
       "url": "https://github.com/makfiz"
