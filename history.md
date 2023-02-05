@@ -8,6 +8,6 @@
 
 ### 1.03
 - fix new UI updates im sms-activate.org 
-- add number hihgtliter
+- add number highlighter
 
 
