@@ -17,8 +17,6 @@ if(window.location.href.includes("linkedin.com/signup")) {
     }) 
   
  
-
-
     document.addEventListener("keydown", (e) => {
         
         if (e.key === pasteKey) {
