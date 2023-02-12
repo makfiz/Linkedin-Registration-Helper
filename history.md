@@ -11,5 +11,7 @@
 - added number highlighter
 ### 0.1.4
 - Added auto submit of forms after paste data
+### 0.2.1
+- Add popup & hotkeys, settings
 
 

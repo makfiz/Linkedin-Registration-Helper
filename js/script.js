@@ -8,7 +8,6 @@ let pasteKey
 
 if(window.location.href.includes("linkedin.com/signup")) {
     email = getEmail()
-    // joinFormEditor()
     createEmailPasteButton()
     createButtonsObserver()
 
@@ -28,7 +27,6 @@ if(window.location.href.includes("linkedin.com/signup")) {
 
                 setInterval(()=>{
                     let focused = window.frames[0].document.hasFocus();
-                     console.log (focused)
                      if (focused) {
                          window.frames[0].parent.focus()
                      }
@@ -40,15 +38,6 @@ if(window.location.href.includes("linkedin.com/signup")) {
             if (pinPasteBtn) {
                 pinPasteBtn.click()
             }
-
-
-            console.log(window.frames)
-            console.log("data-paste-button", document.querySelector("#data-paste-button"))
-            console.log("numberPateBtn", window.frames[0].document.querySelector("#full-number-paste-button"))
-            console.log("pin-paste-button", window.frames[0].document.querySelector("#pin-paste-button"))
-           
-                   
-        
          }  
     
     else {
@@ -69,7 +58,7 @@ if(window.location.href.includes("sms-activate.org")) {
        const activateMobile = desktopGrid[0]
        const activateDesktop = mobileGrid[0]
        const activateChildrens = activateDesktop.childNodes.length > 0 ? activateDesktop : activateMobile
-    //    const listOfItemsWithPin = activateChildrens.querySelectorAll(".activate-grid-item__confirmation") 
+   
        
   
        Array.from(activateChildrens.children[0].children).forEach(item => {
@@ -348,12 +337,3 @@ function itNumber (clipData) {
     return clipData
 }
 
-
-
-// function hotKey (btn) {
-//     window.addEventListener("keydown",(e)=>{
-//         if (e.key === '`') {
-//             btn.click()
-//          }  
-//     })
-// }
