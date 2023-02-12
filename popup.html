@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PopUp</title>
+	<link rel="stylesheet" href=""/>
+	<style>
+		body {
+			padding: 10px;
+			margin:0;
+			background-color: #ebecf1;
+		}
+		#CopyRight {
+			display:block;
+			width:350px;
+			height:330px;
+			overflow:hidden;
+		}
+		.copyright-title a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-decoration: none;
+		}
+		.copyright-title p {
+			font-size:16px;
+			font-weight:bold;
+			color: #21243d;
+			margin: 0;
+		}
+		.copyright-title img {
+			margin: 0;
+			margin-right: 5px;
+			height: 18px;
+		}
+		.name {
+			font-size: 24px;
+			font-weight: 700;
+			color: #21243d;
+			text-align: center;
+			margin: 15px 0;
+		}
+		.settings-area {
+			padding: 10px;
+			border-radius: 10px;
+			border: 1px solid #e2e2e2;
+			background-color: #fff;
+		}
+		.settings {
+			text-align: center;
+			font-size: 20px;
+			color: #21243d;
+			margin: 10px 0;
+		}
+		section {
+			display: flex;
+			justify-content: center;
+			width: 100%
+		}
+		.option {
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			border: 1px solid #e2e2e2;
+			border-radius: 5px;
+			margin: 5px;
+		}
+		.option:hover {
+			background-color: #ebecf1;
+		}
+		.option-checkbox {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.option input {
+			height: 20px;
+		}
+
+		.option label {
+			font-weight: 700;
+			font-size: 15px;
+		}
+		.option span {
+			margin: 0;
+			font-size: 11px;
+			color: #4A5568;
+			padding: 0 5px 5px 5px;
+			text-align: center;
+			line-height: 1.2;
+		}
+		.option p {
+			margin: 0;
+		}
+
+		#wrdlst1 {
+			border: none;
+			resize: none;
+			margin: 0;
+			padding: 10px;
+			border-radius: 10px;
+			border: 1px solid #e2e2e2;
+			width: 298px;
+			outline: none;
+			display: block;
+			margin: auto;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="CopyRight">
+		<div class="copyright-title">
+			<a href="" target="_blank">
+				<img src="">
+				<p></p>
+			</a>
+		</div>
+		<p class="name">Linkedin Registration Helper</p>
+
+		<div class="settings-area">
+			<p class="settings">Settings</p>
+			<section>
+			<div class="option">
+				<span>Current paste-key: <b><p id="selected-key"></p></b></span>
+			</div>
+			</section>
+			
+	
+	
+		<textarea id="wrdlst1" placeholder="Press the desired key" rows="1"></textarea>
+	</div>
+	
+	<script src="js/popup.js"></script>
+</body>
+</html>

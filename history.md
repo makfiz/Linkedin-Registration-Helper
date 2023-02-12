@@ -1,15 +1,15 @@
 ## Linkedin Registration Helper version history:
-### 1.00 
+### 0.1
 - Added UI 
 - Added automatic country selection by phone number
 
-### 1.01
+### 0.1.1
 - Modification UI im sms-activate.org 
 
-### 1.03
+### 0.1.3
 - fix new UI updates im sms-activate.org 
 - added number highlighter
-### 1.04
+### 0.1.4
 - Added auto submit of forms after paste data
 
 

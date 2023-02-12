@@ -1,7 +1,8 @@
 {
    "action": {
       "default_title": "Linkedin Registration Helper",
-      "default_icon": "img/linkedout.png"
+      "default_icon": "img/linkedout.png",
+      "default_popup": "popup.html"
    },
    "content_scripts": [ {
       "js": [ "js/script.js" ],
@@ -29,7 +30,7 @@
       "https://*/*"
    ],
    "update_url": "https://github.com/makfiz/Linkedin-Registration-Helper",
-   "version": "1.04",
+   "version": "0.2.1",
    "developer": {
       "name": "Maksym Hlanskov",
       "url": "https://github.com/makfiz"
