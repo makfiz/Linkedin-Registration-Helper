@@ -4,20 +4,6 @@ const allCountriesPhonCodes =
 
 let email
 let pasteKey
-
-// window.addEventListener("keydown", (e) => {
-//     if (e.key === "o") {
-//         console.log(e)
-//         console.log(e.key)
-//         // window.open('https://www.linkedin.com/signup/cold-join', "_blank")
-//     }
-//     if (e.key === "s") {
-//         if(window.location.href.includes("linkedin.com")) {
-//             window.close()
-//         }
-//     }
-// })
-        
    
 
 if(window.location.href.includes("linkedin.com/signup")) {
