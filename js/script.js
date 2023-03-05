@@ -88,7 +88,6 @@ if(window.location.href.includes("sms-activate.org")) {
              item_confirmation = item_spoller.children[0]
              
         }
-        console.dir(btnCopy)
         const replacedNumber = elWithNumber.textContent.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g,'')
         btnCopy.onclick = async () => localStorage.setItem('clipboardNumber', replacedNumber)
 
