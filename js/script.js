@@ -323,7 +323,7 @@ function getCountryInfoByNumber(number) {
 
   function ValidateEmail(clipData) 
   {
-   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/.test(clipData))
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/.test(clipData))
     {
       return clipData
     }
