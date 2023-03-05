@@ -88,20 +88,15 @@ if(window.location.href.includes("sms-activate.org")) {
              item_confirmation = item_spoller.children[0]
              
         }
-
-       
-        btnCopy.onclick = async () => localStorage.setItem('clipboardNumber', btnCopy.dataset.clipboardText)
-        // await copyToClipboard(btnCopy.dataset.clipboardText.replace(/[&\/\\#,()$~%.'":*?<>{}]/g,'_'))
+        console.dir(btnCopy)
+        const replacedNumber = elWithNumber.textContent.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g,'')
+        btnCopy.onclick = async () => localStorage.setItem('clipboardNumber', replacedNumber)
 
             if(item_spoller.children.length === 1) {
                 
-                item_spoller.children[0].after(createCopyPinButton(item_spoller.children[0]))   
-                // if(item.children[0].children.length === 2){
-                    
-                // }      
+                item_spoller.children[0].after(createCopyPinButton(item_spoller.children[0]))      
             }
-            
-            if (numberInLS == elWithNumber.textContent.replace(/[&\/\\#,+()$~%.'":*?<>{} ]/g,'')) {
+            if (numberInLS == replacedNumber) {
                 elWithNumber.style.cssText = `
                 color: #fff;
                 background-color:#F0684A;
