@@ -27,10 +27,11 @@ if(window.location.href.includes("linkedin.com/signup")) {
 
                 setInterval(()=>{
                     let focused = window.frames[0].document.hasFocus();
+                    if (!focused) return
                      if (focused) {
                          window.frames[0].parent.focus()
                      }
-                 }, 500)
+                 }, 100)
             }
             if (numberPasteBtn && !pinPasteBtn) {
                 numberPasteBtn.click()
