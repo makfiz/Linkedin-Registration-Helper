@@ -18,7 +18,7 @@ if(window.location.href.includes("linkedin.com/signup")) {
  
     document.addEventListener("keydown", (e) => {
         
-        if (e.key === pasteKey) {
+        if (e.code === pasteKey) {
             let  numberPasteBtn = window.frames[0].document.getElementById("full-number-paste-button")
             let pinPasteBtn = window.frames[0].document.getElementById("pin-paste-button")
           
