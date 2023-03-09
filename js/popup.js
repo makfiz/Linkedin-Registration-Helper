@@ -14,7 +14,7 @@ keySelector.onkeydown = function(e){
 };
 
 function setStorage(e){
-	chrome.storage.local.set({'ekey': e.key, 'ecode': e.code});
+	chrome.storage.local.set({'ecode': e.code});
 }
 
 function getStorage() {
