@@ -12,7 +12,7 @@ if(window.location.href.includes("linkedin.com/signup")) {
     createButtonsObserver()
 
     chrome.storage.local.get(['ecode']).then((result)=>{
-        pasteKey = result.ekey || 'KeyV'
+        pasteKey = result.ecode || 'KeyV'
     }) 
   
  
